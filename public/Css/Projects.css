@@ -1,0 +1,561 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #000;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.nav-container a {
+   text-decoration: none;
+    color: white;
+}
+
+.nav-logo a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #aaa;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("/images/ll1.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.missions {
+    padding: 100px 0;
+    background-color: #000;
+}
+
+.missions h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.level-box {
+    background-color: #111;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #222;
+}
+
+.level-box:hover {
+    background-color: #222;
+    border-color: #333;
+}
+
+.level-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.level-title::after {
+    content: ' ▼';
+    font-size: 0.8em;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.level-box:has(.platforms[data-state="open"]) .level-title::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.level-desc {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.platforms {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+}
+
+.platforms[data-state="open"] {
+    overflow: visible;
+}
+
+.platform {
+    background-color: #1a1a1a;
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #252525;
+}
+
+.platform:hover {
+    background-color: #252525;
+    border-color: #333;
+}
+
+.platform h4 {
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    position: relative;
+    padding-right: 25px;
+    user-select: none;
+}
+
+.platform h4::after {
+    content: ' ▶';
+    font-size: 0.8em;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.platform:has(.courses[data-state="open"]) h4::after {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.courses {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.courses[data-state="open"] {
+    overflow: visible;
+}
+
+.courses h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.courses p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.courses ul {
+    list-style-position: inside;
+    margin-bottom: 15px;
+}
+
+.courses li {
+    color: #ccc;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.courses strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Подсветка активных элементов */
+.level-box:has(.platforms[data-state="open"]) {
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+.platform:has(.courses[data-state="open"]) {
+    background-color: #252525;
+    border-color: #444;
+}
+
+.upload-section {
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.upload-section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+}
+
+.upload-box {
+    margin-top: 20px;
+}
+
+.file-input {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 14px 40px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.upload-label:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.uploaded-list {
+    margin-top: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.uploaded-item {
+    background: #111;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #222;
+    transition: all 0.3s;
+}
+
+.uploaded-item:hover {
+    background: #1a1a1a;
+    border-color: #333;
+}
+
+.footer {
+    background-color: #111;
+    padding: 60px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-logo h3 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.footer-logo p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Улучшения для мобильных устройств */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .level-box {
+        padding: 12px 15px;
+    }
+
+    .level-title {
+        font-size: 1.5rem;
+    }
+
+    .platform {
+        padding: 12px;
+    }
+
+    .platform h4 {
+        font-size: 1.1rem;
+    }
+
+    .courses {
+        padding-left: 10px;
+    }
+
+    .courses h3 {
+        font-size: 1.1rem;
+    }
+
+    .upload-section h2 {
+        font-size: 2rem;
+    }
+
+    .upload-label {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .level-title {
+        font-size: 1.3rem;
+    }
+
+    .level-desc {
+        font-size: 0.9rem;
+    }
+
+    .platform h4 {
+        font-size: 1rem;
+    }
+
+    .courses h3 {
+        font-size: 1rem;
+    }
+
+    .courses p, .courses li {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* Гарантия что все блоки будут открываться плавно */
+.level-box, .platform, .courses {
+    transition: all 0.3s ease;
+}
+
+/* Анимация для плавного раскрытия */
+.platforms, .courses {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Дополнительные стили для лучшей визуализации */
+.level-box:has(.platform:hover) {
+    border-color: #444;
+}
+
+.platform:has(.courses h3:hover) {
+    background-color: #2a2a2a;
+}
+
+/* Стили для контента внутри курсов */
+.courses-content {
+    padding: 10px 0;
+}
+
+.courses-content ul {
+    margin-left: 15px;
+}
+
+.courses-content li {
+    margin-bottom: 6px;
+    padding-left: 5px;
+}
+
+/* Улучшенные отступы для вложенных элементов */
+.platforms {
+    margin-top: 10px;
+}
+
+.courses {
+    border-left: 2px solid #333;
+    margin-left: 5px;
+}
+
+/* Эффекты при наведении на интерактивные элементы */
+.level-title:hover::after,
+.platform h4:hover::after {
+    opacity: 1;
+}
+
+.level-title:hover,
+.level-desc:hover {
+    color: #fff;
+}
+
+/* Адаптивные изображения */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Фокус-стили для доступности */
+.level-title:focus,
+.platform h4:focus,
+.upload-label:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Стили для выделенного текста */
+::selection {
+    background-color: #fff;
+    color: #000;
+}
+
+::-moz-selection {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Улучшенные стили для открытых блоков */
+.platforms[data-state="open"] {
+    display: block;
+}
+
+.courses[data-state="open"] {
+    display: block;
+}
+
+/* Гарантия видимости контента в открытых блоках */
+.platforms[data-state="open"] .platform,
+.courses[data-state="open"] .courses-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Плавное появление контента */
+.platforms,
+.courses {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Улучшенные переходы */
+.level-box,
+.platform,
+.courses,
+.platforms {
+    transition: all 0.4s ease;
+}
+
+/* Гарантия что высота корректно рассчитывается */
+.platforms[data-state="open"],
+.courses[data-state="open"] {
+    max-height: none !important;
+}
+
+/* Временное решение для корректного отображения высоты */
+.platforms[data-state="open"] {
+    max-height: 5000px !important;
+}
+
+.courses[data-state="open"] {
+    max-height: 5000px !important;
+}

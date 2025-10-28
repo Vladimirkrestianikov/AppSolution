@@ -1,13 +1,12 @@
 services:
   - type: web
-    name: my-laravel-app
-    runtime: php
+    name: AppSolution
+    env: php
     plan: free
-    buildCommand: "./render-build.sh"
-    startCommand: "php artisan serve --host 0.0.0.0 --port 8000"
+    region: oregon  
+    buildCommand: "./build.sh"
+    startCommand: "php -S 0.0.0.0:$PORT -t public"
     envVars:
-      - key: APP_KEY
-        generateValue: true
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
